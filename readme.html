@@ -104,28 +104,28 @@ excls
 </h1>
 
 <p><a href="https://github.com/visciang/excls/actions/workflows/ci.yml"><img src="https://github.com/visciang/excls/actions/workflows/ci.yml/badge.svg" alt=".github/workflows/ci.yml"/></a> 
- <a href="https://visciang.github.io/excls/readme.html"><img src="https://img.shields.io/badge/docs-latest-green.svg" alt="Docs"/></a></p><p>Elixir Command Line Shell - a simple framework for writing line-oriented command interpreters.</p><h2 id="usage" class="section-heading">
+ <a href="https://visciang.github.io/excls/readme.html"><img src="https://img.shields.io/badge/docs-latest-green.svg" alt="Docs"/></a></p><p>Elixir Command Line Shell - a simple framework for writing line-oriented command interpreters.</p><p><a href="https://asciinema.org/a/3k0WSKZdpwXOKMuMobfxXkJde"><img src="https://asciinema.org/a/3k0WSKZdpwXOKMuMobfxXkJde.svg" alt="asciicast"/></a></p><h2 id="usage" class="section-heading">
   <a href="#usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">usage</p>
   </a>
   Usage
 </h2>
 <p>Escript:</p><pre><code class="makeup elixir" translate="no"><span class="w">
-</span><span class="kd">def</span><span class="w"> </span><span class="nf">project</span><span class="w"> </span><span class="k" data-group-id="4740285352-1">do</span><span class="w">
-  </span><span class="p" data-group-id="4740285352-2">[</span><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">project</span><span class="w"> </span><span class="k" data-group-id="0143910891-1">do</span><span class="w">
+  </span><span class="p" data-group-id="0143910891-2">[</span><span class="w">
     </span><span class="ss">app</span><span class="p">:</span><span class="w"> </span><span class="ss">:mycli</span><span class="p">,</span><span class="w">
-    </span><span class="ss">deps</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4740285352-3">[</span><span class="w">
-      </span><span class="p" data-group-id="4740285352-4">{</span><span class="ss">:excls</span><span class="p">,</span><span class="w"> </span><span class="ss">github</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visciang/excls&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xxx&quot;</span><span class="p" data-group-id="4740285352-4">}</span><span class="w">
-    </span><span class="p" data-group-id="4740285352-3">]</span><span class="p">,</span><span class="w">
-    </span><span class="ss">escript</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4740285352-5">[</span><span class="w">
+    </span><span class="ss">deps</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0143910891-3">[</span><span class="w">
+      </span><span class="p" data-group-id="0143910891-4">{</span><span class="ss">:excls</span><span class="p">,</span><span class="w"> </span><span class="ss">github</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visciang/excls&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xxx&quot;</span><span class="p" data-group-id="0143910891-4">}</span><span class="w">
+    </span><span class="p" data-group-id="0143910891-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">escript</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0143910891-5">[</span><span class="w">
       </span><span class="ss">emu_args</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-noinput&quot;</span><span class="w">
-    </span><span class="p" data-group-id="4740285352-5">]</span><span class="w">
-  </span><span class="p" data-group-id="4740285352-2">]</span><span class="w">
-</span><span class="k" data-group-id="4740285352-1">end</span></code></pre><p>Elixir script:</p><pre><code class="makeup elixir" translate="no"><span class="c1">#!/usr/bin/env -S elixir --erl -noinput</span><span class="w">
+    </span><span class="p" data-group-id="0143910891-5">]</span><span class="w">
+  </span><span class="p" data-group-id="0143910891-2">]</span><span class="w">
+</span><span class="k" data-group-id="0143910891-1">end</span></code></pre><p>Elixir script:</p><pre><code class="makeup elixir" translate="no"><span class="c1">#!/usr/bin/env -S elixir --erl -noinput</span><span class="w">
 
-</span><span class="nc">Mix</span><span class="o">.</span><span class="n">install</span><span class="p" data-group-id="6191906297-1">(</span><span class="p" data-group-id="6191906297-2">[</span><span class="w">
-  </span><span class="p" data-group-id="6191906297-3">{</span><span class="ss">:excls</span><span class="p">,</span><span class="w"> </span><span class="ss">github</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visciang/excls&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xxx&quot;</span><span class="p" data-group-id="6191906297-3">}</span><span class="w">
-</span><span class="p" data-group-id="6191906297-2">]</span><span class="p" data-group-id="6191906297-1">)</span></code></pre><h2 id="demo-app" class="section-heading">
+</span><span class="nc">Mix</span><span class="o">.</span><span class="n">install</span><span class="p" data-group-id="0488226908-1">(</span><span class="p" data-group-id="0488226908-2">[</span><span class="w">
+  </span><span class="p" data-group-id="0488226908-3">{</span><span class="ss">:excls</span><span class="p">,</span><span class="w"> </span><span class="ss">github</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visciang/excls&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xxx&quot;</span><span class="p" data-group-id="0488226908-3">}</span><span class="w">
+</span><span class="p" data-group-id="0488226908-2">]</span><span class="p" data-group-id="0488226908-1">)</span></code></pre><h2 id="demo-app" class="section-heading">
   <a href="#demo-app" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">demo-app</p>
   </a>
