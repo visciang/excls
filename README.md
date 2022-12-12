@@ -1,6 +1,7 @@
 # ExCLS
 
-![CI](https://github.com/visciang/excls/workflows/CI/badge.svg) [![Docs](https://img.shields.io/badge/docs-latest-green.svg)](https://visciang.github.io/excls/readme.html)
+[![.github/workflows/ci.yml](https://github.com/visciang/excls/actions/workflows/ci.yml/badge.svg)](https://github.com/visciang/excls/actions/workflows/ci.yml) 
+ [![Docs](https://img.shields.io/badge/docs-latest-green.svg)](https://visciang.github.io/excls/readme.html)
 
 Elixir Command Line Shell - a simple framework for writing line-oriented command interpreters.
 
