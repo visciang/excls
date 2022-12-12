@@ -5,6 +5,8 @@
 
 Elixir Command Line Shell - a simple framework for writing line-oriented command interpreters.
 
+[![asciicast](https://asciinema.org/a/3k0WSKZdpwXOKMuMobfxXkJde.svg)](https://asciinema.org/a/3k0WSKZdpwXOKMuMobfxXkJde)
+
 ## Usage
 
 Escript:
