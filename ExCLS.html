@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-E252BEA4.js"></script>
+    <script src="dist/sidebar_items-DF967564.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -63,7 +63,7 @@
   <div class="sidebar-header">
 
     <div class="sidebar-projectDetails">
-      <a href="api-reference.html" class="sidebar-projectName" translate="no">
+      <a href="readme.html" class="sidebar-projectName" translate="no">
 excls
       </a>
       <strong class="sidebar-projectVersion" translate="no">
@@ -131,6 +131,18 @@ excls
 
         </div>
 
+          <div class="summary-synopsis"><p>Behaviour state.</p></div>
+
+      </div>
+
+      <div class="summary-row">
+        <div class="summary-signature">
+          <a href="#t:t/0" translate="no">t()</a>
+
+        </div>
+
+          <div class="summary-synopsis"><p>Behaviour module.</p></div>
+
       </div>
 
   </div>
@@ -146,6 +158,8 @@ excls
 
         </div>
 
+          <div class="summary-synopsis"><p>Autocomplete function.</p></div>
+
       </div>
 
       <div class="summary-row">
@@ -153,6 +167,8 @@ excls
           <a href="#c:command/2" translate="no">command(line, state)</a>
 
         </div>
+
+          <div class="summary-synopsis"><p>Command function.</p></div>
 
       </div>
 
@@ -162,6 +178,8 @@ excls
 
         </div>
 
+          <div class="summary-synopsis"><p>Initialization function.</p></div>
+
       </div>
 
       <div class="summary-row">
@@ -170,6 +188,8 @@ excls
 
         </div>
 
+          <div class="summary-synopsis"><p>Intro banner.</p></div>
+
       </div>
 
       <div class="summary-row">
@@ -177,6 +197,8 @@ excls
           <a href="#c:prompt/1" translate="no">prompt(state)</a>
 
         </div>
+
+          <div class="summary-synopsis"><p>Prompt function.</p></div>
 
       </div>
 
@@ -193,7 +215,7 @@ excls
 
         </div>
 
-          <div class="summary-synopsis"><p>See <code class="inline">ExCLS.Shell.run/2</code>.</p></div>
+          <div class="summary-synopsis"><p>See <a href="ExCLS.Shell.html#run/2"><code class="inline">ExCLS.Shell.run/2</code></a>.</p></div>
 
       </div>
 
@@ -220,7 +242,7 @@ Types
     </a>
     <h1 class="signature" translate="no">state()</h1>
 
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L8" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L16" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -236,7 +258,35 @@ Types
 
       </div>
 
+<p>Behaviour state.</p>
+  </section>
+</section>
+<section class="detail" id="t:t/0">
 
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature" translate="no">t()</h1>
+
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L11" class="view-source" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> t() :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()</pre>
+
+      </div>
+
+<p>Behaviour module.</p>
   </section>
 </section>
 
@@ -261,7 +311,7 @@ Callbacks
     </a>
     <h1 class="signature" translate="no">autocomplete(line, cursor_at, state)</h1>
 
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L16" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L51" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -282,7 +332,7 @@ Callbacks
 
       </div>
 
-
+<p>Autocomplete function.</p><p>Suggest autocomplete options when a tab key is pressed.</p>
   </section>
 </section>
 <section class="detail" id="c:command/2">
@@ -294,7 +344,7 @@ Callbacks
     </a>
     <h1 class="signature" translate="no">command(line, state)</h1>
 
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L13" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L42" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -312,7 +362,7 @@ Callbacks
 
       </div>
 
-
+<p>Command function.</p><p>Interpret the argument as though it had been typed in response to the prompt.</p>
   </section>
 </section>
 <section class="detail" id="c:init/0">
@@ -324,7 +374,7 @@ Callbacks
     </a>
     <h1 class="signature" translate="no">init()</h1>
 
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L10" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L21" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -340,7 +390,7 @@ Callbacks
 
       </div>
 
-
+<p>Initialization function.</p>
   </section>
 </section>
 <section class="detail" id="c:intro/0">
@@ -352,7 +402,7 @@ Callbacks
     </a>
     <h1 class="signature" translate="no">intro()</h1>
 
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L11" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L28" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -370,7 +420,7 @@ Callbacks
 
       </div>
 
-
+<p>Intro banner.</p><p>A string to issue as an intro or banner.</p>
   </section>
 </section>
 <section class="detail" id="c:prompt/1">
@@ -382,7 +432,7 @@ Callbacks
     </a>
     <h1 class="signature" translate="no">prompt(state)</h1>
 
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L12" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L35" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -398,7 +448,7 @@ Callbacks
 
       </div>
 
-
+<p>Prompt function.</p><p>The prompt issued to solicit input.</p>
   </section>
 </section>
 
@@ -423,7 +473,7 @@ Functions
     </a>
     <h1 class="signature" translate="no">run(behaviour, opts)</h1>
 
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L32" class="view-source" rel="help" title="View Source">
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls.ex#L67" class="view-source" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
@@ -433,7 +483,7 @@ Functions
 
   <section class="docstring">
 
-<p>See <code class="inline">ExCLS.Shell.run/2</code>.</p>
+<p>See <a href="ExCLS.Shell.html#run/2"><code class="inline">ExCLS.Shell.run/2</code></a>.</p>
   </section>
 </section>
 

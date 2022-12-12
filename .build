@@ -1,4 +1,6 @@
 404.html
+ExCLS.Autocomplete.html
+ExCLS.Shell.html
 ExCLS.html
 api-reference.html
 dist/handlebars.runtime-NWIB6V2M.js
@@ -26,8 +28,8 @@ dist/merriweather-latin-ext-300-normal-K6L27CZ5.woff2
 dist/merriweather-vietnamese-300-italic-EHHNZPUO.woff2
 dist/merriweather-vietnamese-300-normal-U376L4Z4.woff2
 dist/remixicon-E5UFLALU.woff2
-dist/search_items-CF791D4E.js
-dist/sidebar_items-E252BEA4.js
+dist/search_items-88772AFC.js
+dist/sidebar_items-DF967564.js
 index.html
 readme.html
 search.html

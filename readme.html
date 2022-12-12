@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-E252BEA4.js"></script>
+    <script src="dist/sidebar_items-DF967564.js"></script>
 
       <script src="docs_config.js"></script>
 
@@ -63,7 +63,7 @@
   <div class="sidebar-header">
 
     <div class="sidebar-projectDetails">
-      <a href="api-reference.html" class="sidebar-projectName" translate="no">
+      <a href="readme.html" class="sidebar-projectName" translate="no">
 excls
       </a>
       <strong class="sidebar-projectVersion" translate="no">
@@ -103,7 +103,40 @@ excls
   <span>ExCLS</span>
 </h1>
 
-<p>Elixir Command Line Shell.</p>
+<p><img src="https://github.com/visciang/excls/workflows/CI/badge.svg" alt="CI"/> <a href="https://visciang.github.io/excls/readme.html"><img src="https://img.shields.io/badge/docs-latest-green.svg" alt="Docs"/></a></p><p>Elixir Command Line Shell - a simple framework for writing line-oriented command interpreters.</p><h2 id="usage" class="section-heading">
+  <a href="#usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">usage</p>
+  </a>
+  Usage
+</h2>
+<p>Escript:</p><pre><code class="makeup elixir" translate="no"><span class="w">
+</span><span class="kd">def</span><span class="w"> </span><span class="nf">project</span><span class="w"> </span><span class="k" data-group-id="9345686481-1">do</span><span class="w">
+  </span><span class="p" data-group-id="9345686481-2">[</span><span class="w">
+    </span><span class="ss">app</span><span class="p">:</span><span class="w"> </span><span class="ss">:mycli</span><span class="p">,</span><span class="w">
+    </span><span class="ss">deps</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9345686481-3">[</span><span class="w">
+      </span><span class="p" data-group-id="9345686481-4">{</span><span class="ss">:excls</span><span class="p">,</span><span class="w"> </span><span class="ss">github</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visciang/excls&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xxx&quot;</span><span class="p" data-group-id="9345686481-4">}</span><span class="w">
+    </span><span class="p" data-group-id="9345686481-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">escript</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9345686481-5">[</span><span class="w">
+      </span><span class="ss">emu_args</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-noinput&quot;</span><span class="w">
+    </span><span class="p" data-group-id="9345686481-5">]</span><span class="w">
+  </span><span class="p" data-group-id="9345686481-2">]</span><span class="w">
+</span><span class="k" data-group-id="9345686481-1">end</span></code></pre><p>Elixir script:</p><pre><code class="makeup elixir" translate="no"><span class="c1">#!/usr/bin/env -S elixir --erl -noinput</span><span class="w">
+
+</span><span class="nc">Mix</span><span class="o">.</span><span class="n">install</span><span class="p" data-group-id="3397603273-1">(</span><span class="p" data-group-id="3397603273-2">[</span><span class="w">
+  </span><span class="p" data-group-id="3397603273-3">{</span><span class="ss">:excls</span><span class="p">,</span><span class="w"> </span><span class="ss">github</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;visciang/excls&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;xxx&quot;</span><span class="p" data-group-id="3397603273-3">}</span><span class="w">
+</span><span class="p" data-group-id="3397603273-2">]</span><span class="p" data-group-id="3397603273-1">)</span></code></pre><h2 id="demo-app" class="section-heading">
+  <a href="#demo-app" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">demo-app</p>
+  </a>
+  Demo app
+</h2>
+<p>See <code class="inline">demo.exs</code>.</p><h2 id="feature" class="section-heading">
+  <a href="#feature" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">feature</p>
+  </a>
+  Feature
+</h2>
+<ul><li>Statefull prompt</li><li>History support (via up/down key)</li><li>Autocomplete (via custom callback or <a href="ExCLS.Autocomplete.html"><code class="inline">ExCLS.Autocomplete</code></a> helper)</li></ul>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
