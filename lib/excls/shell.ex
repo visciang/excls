@@ -17,6 +17,9 @@ defmodule ExCLS.Shell.Context do
 end
 
 defmodule ExCLS.Shell do
+  @moduledoc """
+  Shell runner.
+  """
   alias ExCLS.History
   alias ExCLS.Shell.Context
   alias ExCLS.Shell.Edit
