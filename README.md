@@ -43,5 +43,5 @@ See `demo.exs`.
 ## Feature
 
 - Statefull prompt
-- History support (via up/down key)
-- Autocomplete (via custom callback or `ExCLS.Autocomplete` helper)
+- History support via up/down key (in memory)
+- Autocomplete via custom callback or `ExCLS.Autocomplete` helper
