@@ -45,7 +45,7 @@ defmodule DemoShell do
         {:ok, "v#{@version}\n", next_state}
 
       "" ->
-        next_state = %{state | count: state.count + 1}
+        next_state = %{state | count: state.count}
         {:ok, "", next_state}
 
       _ ->
