@@ -6,13 +6,22 @@ defmodule ExCLS.TTY do
   @tty __MODULE__
 
   @typep idx :: -32_768..32_767
-  @typep request ::
+  @typep tty_op ::
            {:put_chars, :unicode, IO.chardata()}
            | {:put_chars_sync, :unicode, IO.chardata(), {from :: pid(), reply :: term()}}
            | {:move_rel, idx()}
            | {:insert_chars, :unicode, IO.chardata()}
            | {:delete_chars, idx()}
            | :beep
+
+  @tty_op_put_chars 0
+  @tty_op_move_rel 1
+  @tty_op_insert_chars 2
+  @tty_op_delete_chars 3
+  @tty_op_beep 4
+
+  @erts_ttysl_drv_control_magic_number 0x018B0900
+  @tty_ctrl_op_get_winsize 100 + @erts_ttysl_drv_control_magic_number
 
   @spec start :: :ok
   def start do
@@ -28,27 +37,41 @@ defmodule ExCLS.TTY do
 
   @spec put_chars(IO.chardata()) :: :ok
   def put_chars(chars) do
-    request({:put_chars, :unicode, chars})
+    tty_op({:put_chars, :unicode, chars})
   end
 
   @spec insert_chars(IO.chardata()) :: :ok
   def insert_chars(chars) do
-    request({:insert_chars, :unicode, chars})
+    tty_op({:insert_chars, :unicode, chars})
   end
 
   @spec move_rel(idx()) :: :ok
   def move_rel(idx) do
-    request({:move_rel, idx})
+    tty_op({:move_rel, idx})
   end
 
   @spec delete_chars(idx()) :: :ok
   def delete_chars(idx) do
-    request({:delete_chars, idx})
+    tty_op({:delete_chars, idx})
   end
 
   @spec beep() :: :ok
   def beep do
-    request(:beep)
+    tty_op(:beep)
+  end
+
+  @spec get_winsize() :: {w :: non_neg_integer(), h :: non_neg_integer()}
+  def get_winsize do
+    tty_ctrl_op(:get_winsize)
+  end
+
+  defp tty_ctrl_op(op) do
+    case op do
+      :get_winsize ->
+        res = :erlang.port_control(tty(), @tty_ctrl_op_get_winsize, [])
+        <<w::32-unsigned-integer-native, h::32-unsigned-integer-native>> = :erlang.list_to_binary(res)
+        {w, h}
+    end
   end
 
   @spec receive() :: String.t()
@@ -68,15 +91,15 @@ defmodule ExCLS.TTY do
     end
   end
 
-  @spec request(request()) :: :ok
-  defp request(request) do
+  @spec tty_op(tty_op()) :: :ok
+  defp tty_op(op) do
     data =
-      case request do
-        {:put_chars, :unicode, chars} -> [0 | chars]
-        {:move_rel, count} -> [1 | put_int16(count)]
-        {:insert_chars, :unicode, chars} -> [2 | chars]
-        {:delete_chars, count} -> [3 | put_int16(count)]
-        :beep -> [4]
+      case op do
+        {:put_chars, :unicode, chars} -> [@tty_op_put_chars | chars]
+        {:move_rel, count} -> [@tty_op_move_rel | put_int16(count)]
+        {:insert_chars, :unicode, chars} -> [@tty_op_insert_chars | chars]
+        {:delete_chars, count} -> [@tty_op_delete_chars | put_int16(count)]
+        :beep -> [@tty_op_beep]
       end
 
     true = Port.command(tty(), data)
