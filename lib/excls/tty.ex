@@ -114,15 +114,20 @@ defmodule ExCLS.TTY do
 end
 
 defmodule ExCLS.TTY.Ctrl do
-  @moduledoc false
+  @moduledoc """
+  Ctrl bindings.
+  """
 
-  # https://fishshell.com/docs/current/interactive.html#command-line-editor
-  # CTRL+a  (moves the cursor to the beginning of the line)
-  #   defmacro a, do: quote(do: <<1>>)
-  # CTRL+e  (moves the cursor to the end of the line)
-  # CTRL+e  (got to end of line)
-  # CTRL+←  (move the cursor one word left)
-  # CTRL+→  (move the cursor one word right)
+  @doc "`CTRL`+`a` moves the cursor to the beginning of the line"
+  defmacro a, do: quote(do: <<1>>)
+  @doc "`CTRL`+`e` moves the cursor to the end of the line"
+  defmacro e, do: quote(do: <<5>>)
+  @doc "`CTRL`+`d` delete one character to the right of the cursor"
+  defmacro d, do: quote(do: <<4>>)
+  @doc "`CTRL`+`←` move the cursor one word left"
+  defmacro left, do: quote(do: "\e[1;5D")
+  @doc "`CTRL`+`→` move the cursor one word right"
+  defmacro right, do: quote(do: "\e[1;5C")
 end
 
 defmodule ExCLS.TTY.Key do

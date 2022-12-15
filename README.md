@@ -45,3 +45,4 @@ See `demo.exs`.
 - Statefull prompt
 - History support via up/down key (in memory)
 - Autocomplete via custom callback or `ExCLS.Autocomplete` helper
+- Ctrl bindings (`ExCLS.TTY.Ctrl`)

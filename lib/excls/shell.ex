@@ -70,11 +70,13 @@ end
 defmodule ExCLS.Shell.Edit do
   @moduledoc false
 
+  alias ExCLS.Autocomplete
   alias ExCLS.History
   alias ExCLS.Shell.Context
   alias ExCLS.TTY
-  alias ExCLS.TTY.Key
+  alias ExCLS.TTY.{Ctrl, Key}
 
+  require Ctrl
   require Key
 
   @spec prompt(Context.t()) :: Context.t()
@@ -219,6 +221,72 @@ defmodule ExCLS.Shell.Edit do
     end
   end
 
+  def key(Ctrl.a(), %Context{} = ctx) do
+    key(Key.home(), ctx)
+  end
+
+  def key(Ctrl.e(), %Context{} = ctx) do
+    key(Key.end_(), ctx)
+  end
+
+  def key(Ctrl.d(), %Context{} = ctx) do
+    key(Key.delete(), ctx)
+  end
+
+  def key(Ctrl.left(), %Context{} = ctx) do
+    case Autocomplete.tokens(ctx.line, ctx.cursor) do
+      nil ->
+        {:edit, ctx}
+
+      {:ok, [], nil, nil} ->
+        {:edit, ctx}
+
+      {:ok, tokens, _current_token, current_token_idx} ->
+        {current_token_start_cursor, _current_token_end_cursor} = token_start_end_cursors(tokens, current_token_idx)
+
+        cursor =
+          if ctx.cursor == current_token_start_cursor do
+            prev_token_idx = max(current_token_idx - 1, 0)
+            {prev_token_start_cursor, _prev_token_end_cursor} = token_start_end_cursors(tokens, prev_token_idx)
+
+            prev_token_start_cursor
+          else
+            current_token_start_cursor
+          end
+
+        TTY.move_rel(-(ctx.cursor - cursor))
+
+        {:edit, %{ctx | cursor: cursor}}
+    end
+  end
+
+  def key(Ctrl.right(), %Context{} = ctx) do
+    case Autocomplete.tokens(ctx.line, ctx.cursor) do
+      nil ->
+        {:edit, ctx}
+
+      {:ok, [], nil, nil} ->
+        {:edit, ctx}
+
+      {:ok, tokens, _current_token, current_token_idx} ->
+        {_current_token_start_cursor, current_token_end_cursor} = token_start_end_cursors(tokens, current_token_idx)
+
+        cursor =
+          if ctx.cursor == current_token_end_cursor do
+            next_token_idx = min(current_token_idx + 1, length(tokens) - 1)
+            {_next_token_start_cursor, next_token_end_cursor} = token_start_end_cursors(tokens, next_token_idx)
+
+            next_token_end_cursor
+          else
+            current_token_end_cursor
+          end
+
+        TTY.move_rel(cursor - ctx.cursor)
+
+        {:edit, %{ctx | cursor: cursor}}
+    end
+  end
+
   def key(key, %Context{} = ctx) do
     if String.length(key) == 1 and String.printable?(key) do
       if cursor_end_of_line?(ctx) do
@@ -240,6 +308,23 @@ defmodule ExCLS.Shell.Edit do
 
       {:edit, ctx}
     end
+  end
+
+  @spec token_start_end_cursors(tokens :: [String.t()], token_idx :: non_neg_integer()) ::
+          {start :: non_neg_integer(), end_ :: non_neg_integer()}
+  defp token_start_end_cursors(tokens, token_idx) do
+    token = Enum.at(tokens, token_idx)
+
+    token_end_cursor =
+      tokens
+      |> Enum.take(token_idx + 1)
+      |> Enum.map(&String.length/1)
+      |> Enum.sum()
+      |> then(&max(&1, 0))
+
+    token_start_cursor = max(token_end_cursor - String.length(token), 0)
+
+    {token_start_cursor, token_end_cursor}
   end
 
   @spec cursor_end_of_line?(Context.t()) :: boolean()

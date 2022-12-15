@@ -45,6 +45,38 @@ defmodule ExCLS.Autocomplete do
     end
   end
 
+  @doc false
+  @spec tokens(line(), cursor_at :: non_neg_integer()) :: nil | {:ok, tokens(), current_token(), current_token_idx()}
+  def tokens(line, cursor_at) do
+    tokens =
+      line
+      |> String.split(" ", trim: false)
+      |> Enum.intersperse(" ")
+      |> Enum.reject(&(&1 == ""))
+
+    tokens
+    |> Enum.with_index()
+    |> Enum.reduce_while(0, fn {token, idx}, len ->
+      len = len + String.length(token)
+
+      if len >= cursor_at do
+        {:halt, {token, idx}}
+      else
+        {:cont, len}
+      end
+    end)
+    |> case do
+      0 ->
+        {:ok, [], nil, nil}
+
+      {token, idx} ->
+        {:ok, tokens, token, idx}
+
+      _ ->
+        nil
+    end
+  end
+
   @spec scan_tokens(cmd_opts(), tokens(), current_token(), current_token_idx()) :: scan_res() | :done
   defp scan_tokens(cmd_opts, tokens, current_token, current_idx) do
     opts =
@@ -128,36 +160,5 @@ defmodule ExCLS.Autocomplete do
   @spec filter(options :: [String.t()], prefix :: String.t()) :: [String.t()]
   defp filter(options, prefix) do
     Enum.filter(options, &String.starts_with?(&1, prefix))
-  end
-
-  @spec tokens(line(), cursor_at :: non_neg_integer()) :: nil | {:ok, tokens(), current_token(), current_token_idx()}
-  defp tokens(line, cursor_at) do
-    tokens =
-      line
-      |> String.split(" ", trim: false)
-      |> Enum.intersperse(" ")
-      |> Enum.reject(&(&1 == ""))
-
-    tokens
-    |> Enum.with_index()
-    |> Enum.reduce_while(0, fn {token, idx}, len ->
-      len = len + String.length(token)
-
-      if len >= cursor_at do
-        {:halt, {token, idx}}
-      else
-        {:cont, len}
-      end
-    end)
-    |> case do
-      0 ->
-        {:ok, [], nil, nil}
-
-      {token, idx} ->
-        {:ok, tokens, token, idx}
-
-      _ ->
-        nil
-    end
   end
 end
