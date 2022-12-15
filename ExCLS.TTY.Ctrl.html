@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.29.1">
     <meta name="project" content="excls v0.1.0">
 
-    <title>ExCLS.Autocomplete — excls v0.1.0</title>
+    <title>ExCLS.TTY.Ctrl — excls v0.1.0</title>
     <link rel="stylesheet" href="dist/html-elixir-V2ETBPMB.css" />
 
 
@@ -96,19 +96,19 @@ excls
 </button>
 
 
-    <a href="https://github.com/visciang/excls/blob/main/lib/excls/autocomplete.ex#L1" title="View Source" class="icon-action" rel="help">
+    <a href="https://github.com/visciang/excls/blob/main/lib/excls/tty.ex#L116" title="View Source" class="icon-action" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
 
-  <span translate="no">ExCLS.Autocomplete</span> 
+  <span translate="no">ExCLS.TTY.Ctrl</span> 
   <small class="app-vsn" translate="no">(excls v0.1.0)</small>
 
 </h1>
 
 
   <section id="moduledoc">
-<p>Helper to implement a classic command+args <a href="ExCLS.html#c:autocomplete/3"><code class="inline">ExCLS.autocomplete/3</code></a> callback.</p>
+<p>Ctrl bindings.</p>
   </section>
 
 
@@ -120,30 +120,6 @@ excls
       </a>
       Summary
     </h1>
-<div class="summary-types summary">
-  <h2>
-    <a href="#types">Types</a>
-  </h2>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#t:cmd_opts/0" translate="no">cmd_opts()</a>
-
-      </div>
-
-        <div class="summary-synopsis"><p>Command + [args] definitions.</p></div>
-
-    </div>
-
-    <div class="summary-row">
-      <div class="summary-signature">
-        <a href="#t:scan_res/0" translate="no">scan_res()</a>
-
-      </div>
-
-    </div>
-
-</div>
 <div class="summary-functions summary">
   <h2>
     <a href="#functions">Functions</a>
@@ -151,9 +127,51 @@ excls
 
     <div class="summary-row">
       <div class="summary-signature">
-        <a href="#scan/3" translate="no">scan(cmd_opts, line, cursor_at)</a>
+        <a href="#a/0" translate="no">a()</a>
 
       </div>
+
+        <div class="summary-synopsis"><p><code class="inline">CTRL</code>+<code class="inline">a</code> moves the cursor to the beginning of the line</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#d/0" translate="no">d()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p><code class="inline">CTRL</code>+<code class="inline">d</code> delete one character to the right of the cursor</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#e/0" translate="no">e()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p><code class="inline">CTRL</code>+<code class="inline">e</code> moves the cursor to the end of the line</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#left/0" translate="no">left()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p><code class="inline">CTRL</code>+<code class="inline">←</code> move the cursor one word left</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#right/0" translate="no">right()</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p><code class="inline">CTRL</code>+<code class="inline">→</code> move the cursor one word right</p></div>
 
     </div>
 
@@ -161,81 +179,6 @@ excls
 
   </section>
 
-
-  <section id="types" class="details-list">
-    <h1 class="section-heading">
-      <a class="hover-link" href="#types">
-        <i class="ri-link-m" aria-hidden="true"></i>
-        <span class="sr-only">Link to this section</span>
-      </a>
-Types
-    </h1>
-    <div class="types-list">
-<section class="detail" id="t:cmd_opts/0">
-
-  <div class="detail-header">
-    <a href="#t:cmd_opts/0" class="detail-link" title="Link to this type">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature" translate="no">cmd_opts()</h1>
-
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls/autocomplete.ex#L16" class="icon-action" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@type</span> cmd_opts() :: %{required(cmd :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; options :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]}</pre>
-
-      </div>
-
-<p>Command + [args] definitions.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="6661065375-1">%{</span><span class="w">
-  </span><span class="s">&quot;ls&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="6661065375-2">[</span><span class="s">&quot;--verbose&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--all&quot;</span><span class="p" data-group-id="6661065375-2">]</span><span class="p">,</span><span class="w">
-  </span><span class="s">&quot;rm&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="6661065375-3">[</span><span class="s">&quot;--force&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--recursive&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-f&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-r&quot;</span><span class="p" data-group-id="6661065375-3">]</span><span class="w">
-</span><span class="p" data-group-id="6661065375-1">}</span></code></pre>
-  </section>
-</section>
-<section class="detail" id="t:scan_res/0">
-
-  <div class="detail-header">
-    <a href="#t:scan_res/0" class="detail-link" title="Link to this type">
-      <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this type</span>
-    </a>
-    <h1 class="signature" translate="no">scan_res()</h1>
-
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls/autocomplete.ex#L20" class="icon-action" rel="help" title="View Source">
-       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-       <span class="sr-only">View Source</span>
-     </a>
-
-
-  </div>
-
-  <section class="docstring">
-
-      <div class="specs">
-
-          <pre translate="no"><span class="attribute">@type</span> scan_res() ::
-  {:suggest, completed_line :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), cursor_idx :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
-   suggestions :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]}
-  | {:done, completed_line :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), cursor_idx :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()}</pre>
-
-      </div>
-
-
-  </section>
-</section>
-
-    </div>
-  </section>
 
   <section id="functions" class="details-list">
     <h1 class="section-heading">
@@ -246,32 +189,124 @@ Types
 Functions
     </h1>
     <div class="functions-list">
-<section class="detail" id="scan/3">
+<section class="detail" id="a/0">
 
   <div class="detail-header">
-    <a href="#scan/3" class="detail-link" title="Link to this function">
+    <a href="#a/0" class="detail-link" title="Link to this macro">
       <i class="ri-link-m" aria-hidden="true"></i>
-      <span class="sr-only">Link to this function</span>
+      <span class="sr-only">Link to this macro</span>
     </a>
-    <h1 class="signature" translate="no">scan(cmd_opts, line, cursor_at)</h1>
+    <h1 class="signature" translate="no">a()</h1>
 
-      <a href="https://github.com/visciang/excls/blob/main/lib/excls/autocomplete.ex#L31" class="icon-action" rel="help" title="View Source">
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls/tty.ex#L122" class="icon-action" rel="help" title="View Source">
        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
        <span class="sr-only">View Source</span>
      </a>
 
 
+      <span class="note">(macro)</span>
+
   </div>
 
   <section class="docstring">
 
-      <div class="specs">
+<p><code class="inline">CTRL</code>+<code class="inline">a</code> moves the cursor to the beginning of the line</p>
+  </section>
+</section>
+<section class="detail" id="d/0">
 
-          <pre translate="no"><span class="attribute">@spec</span> scan(<a href="#t:cmd_opts/0">cmd_opts</a>(), line(), cursor_at :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>()) :: <a href="#t:scan_res/0">scan_res</a>()</pre>
+  <div class="detail-header">
+    <a href="#d/0" class="detail-link" title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">d()</h1>
 
-      </div>
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls/tty.ex#L126" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p><code class="inline">CTRL</code>+<code class="inline">d</code> delete one character to the right of the cursor</p>
+  </section>
+</section>
+<section class="detail" id="e/0">
+
+  <div class="detail-header">
+    <a href="#e/0" class="detail-link" title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">e()</h1>
+
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls/tty.ex#L124" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p><code class="inline">CTRL</code>+<code class="inline">e</code> moves the cursor to the end of the line</p>
+  </section>
+</section>
+<section class="detail" id="left/0">
+
+  <div class="detail-header">
+    <a href="#left/0" class="detail-link" title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">left()</h1>
+
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls/tty.ex#L128" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p><code class="inline">CTRL</code>+<code class="inline">←</code> move the cursor one word left</p>
+  </section>
+</section>
+<section class="detail" id="right/0">
+
+  <div class="detail-header">
+    <a href="#right/0" class="detail-link" title="Link to this macro">
+      <i class="ri-link-m" aria-hidden="true"></i>
+      <span class="sr-only">Link to this macro</span>
+    </a>
+    <h1 class="signature" translate="no">right()</h1>
+
+      <a href="https://github.com/visciang/excls/blob/main/lib/excls/tty.ex#L130" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
+
+      <span class="note">(macro)</span>
+
+  </div>
+
+  <section class="docstring">
+
+<p><code class="inline">CTRL</code>+<code class="inline">→</code> move the cursor one word right</p>
   </section>
 </section>
 
